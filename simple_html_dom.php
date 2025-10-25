@@ -320,7 +320,7 @@ class simple_html_dom
 		}
 
 		// Since CP1252 is a superset, if we get one of it's subsets, we want it instead.
-		if ((strtolower($charset) == strtolower('ISO-8859-1')) || (strtolower($charset) == strtolower('Latin1')) || (strtolower($charset) == strtolower('Latin-1')))
+		if ((strtolower($charset) == 'iso-8859-1') || (strtolower($charset) == 'latin1') || (strtolower($charset) == 'latin-1'))
 		{
 			if (is_object($debugObject))
 			{
@@ -360,8 +360,8 @@ class simple_html_dom
 			if (($pos = strpos($tag, ' ')) !== false)
 				$tag = substr($tag, 0, $pos);
 
-			$parent_lower = strtolower($this->parent->tag);
-			$tag_lower = strtolower($tag);
+			$parent_lower = strtolower($this->parent->tag . '');
+			$tag_lower = strtolower($tag. '');
 
 			if ($parent_lower !== $tag_lower)
 			{
@@ -370,10 +370,10 @@ class simple_html_dom
 					$this->parent->_[HDOM_INFO_END] = 0;
 					$org_parent = $this->parent;
 
-					while (($this->parent->parent) && strtolower($this->parent->tag) !== $tag_lower)
+					while (($this->parent->parent) && strtolower($this->parent->tag . '') !== $tag_lower)
 						$this->parent = $this->parent->parent;
 
-					if (strtolower($this->parent->tag) !== $tag_lower)
+					if (strtolower($this->parent->tag . '') !== $tag_lower)
 					{
 						$this->parent = $org_parent; // restore origonal parent
 						if ($this->parent->parent)
@@ -387,17 +387,17 @@ class simple_html_dom
 					$this->parent->_[HDOM_INFO_END] = 0;
 					$org_parent = $this->parent;
 
-					while (($this->parent->parent) && strtolower($this->parent->tag) !== $tag_lower)
+					while (($this->parent->parent) && strtolower($this->parent->tag . '') !== $tag_lower)
 						$this->parent = $this->parent->parent;
 
-					if (strtolower($this->parent->tag) !== $tag_lower)
+					if (strtolower($this->parent->tag . '') !== $tag_lower)
 					{
 						$this->parent = $org_parent; // restore origonal parent
 						$this->parent->_[HDOM_INFO_END] = $this->cursor;
 						return $this->as_text_node($tag);
 					}
 				}
-				elseif (($this->parent->parent) && strtolower($this->parent->parent->tag) === $tag_lower)
+				elseif (($this->parent->parent) && strtolower($this->parent->parent->tag . '') === $tag_lower)
 				{
 					$this->parent->_[HDOM_INFO_END] = 0;
 					$this->parent = $this->parent->parent;
@@ -468,13 +468,13 @@ class simple_html_dom
 
 		// begin tag
 		$node->nodetype = HDOM_TYPE_ELEMENT;
-		$tag_lower = strtolower($tag);
+		$tag_lower = strtolower($tag . '');
 		$node->tag = ($this->lowercase) ? $tag_lower : $tag;
 
 		// handle optional closing tags
 		if (isset($this->optional_closing_tags[$tag_lower]))
 		{
-			while (isset($this->optional_closing_tags[$tag_lower][strtolower($this->parent->tag)]))
+			while (isset($this->optional_closing_tags[$tag_lower][strtolower($this->parent->tag . '')]))
 			{
 				$this->parent->_[HDOM_INFO_END] = 0;
 				$this->parent = $this->parent->parent;
@@ -530,7 +530,7 @@ class simple_html_dom
 				$space[1] = $this->copy_skip($this->token_blank);
 				$name = $this->restore_noise($name);
 				if ($this->lowercase)
-					$name = strtolower($name);
+					$name = strtolower($name . '');
 				if ($this->char === '=')
 				{
 					$this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next
@@ -564,7 +564,7 @@ class simple_html_dom
 		else
 		{
 			// reset parent
-			if (!isset($this->self_closing_tags[strtolower($node->tag)]))
+			if (!isset($this->self_closing_tags[strtolower($node->tag . '')]))
 				$this->parent = $node;
 		}
 		$this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next

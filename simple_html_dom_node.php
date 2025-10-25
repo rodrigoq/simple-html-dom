@@ -568,7 +568,7 @@ class simple_html_dom_node
 				//PaperG - If lowercase is set, do a case insensitive test of the value of the selector.
 				if ($lowercase)
 				{
-					$check = $this->match($exp, strtolower($val), strtolower($nodeKeyValue));
+					$check = $this->match($exp, strtolower($val . ''), strtolower($nodeKeyValue . ''));
 				}
 				else
 				{
@@ -588,7 +588,7 @@ class simple_html_dom_node
 						{
 							if ($lowercase)
 							{
-								$check = $this->match($exp, strtolower($val), strtolower($k));
+								$check = $this->match($exp, strtolower($val . ''), strtolower($k . ''));
 							}
 							else
 							{
@@ -699,8 +699,8 @@ class simple_html_dom_node
 			// convert to lowercase
 			if ($this->dom->lowercase)
 			{
-				$tag = strtolower($tag);
-				$key = strtolower($key);
+				$tag = strtolower($tag . '');
+				$key = strtolower($key . '');
 			}
 			//elements that do NOT have the specified attribute
 			if (isset($key[0]) && $key[0] === '!')
@@ -787,8 +787,8 @@ class simple_html_dom_node
 
 		if ($this->dom)
 		{
-			$sourceCharset = strtoupper($this->dom->_charset);
-			$targetCharset = strtoupper($this->dom->_target_charset);
+			$sourceCharset = strtoupper($this->dom->_charset . '');
+			$targetCharset = strtoupper($this->dom->_target_charset . '');
 		}
 		if (is_object($debugObject))
 		{
