@@ -1059,9 +1059,11 @@ class simple_html_dom
         // strip out preformatted tags
         $this->remove_noise("'<\s*(?:code)[^>]*>(.*?)<\s*/\s*(?:code)\s*>'is");
         // strip out server side scripts
+        // OJO: esto rompe cosas
         $this->remove_noise("'(<\?)(.*?)(\?>)'s", true);
         // strip smarty scripts
-        $this->remove_noise("'(\{\w)(.*?)(\})'s", true);
+        // OJO: esto rompe cosas
+        // $this->remove_noise("'(\{\w)(.*?)(\})'s", true);
 
         // parsing
         while ($this->parse());
@@ -1718,4 +1720,3 @@ class simple_html_dom
     function loadFile() {$args = func_get_args();$this->load_file($args);}
 }
 
-?>
