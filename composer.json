@@ -14,5 +14,8 @@
 			"simple-html-dom.php"
 		]
 	},
+	"require": {
+		 "php": "^7.4 || ^8.3"
+	},
 	"version": "1.5.1"
 }
