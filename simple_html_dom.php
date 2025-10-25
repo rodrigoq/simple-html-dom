@@ -163,19 +163,27 @@ class simple_html_dom
 	{
 		foreach ($this->nodes as $n)
 		{
-			$n->clear(); $n = null;
-		}		// This add next line is documented in the sourceforge repository. 2977248 as a fix for ongoing memory leaks that occur even with the use of clear.
+			$n->clear();
+			$n = null;
+		}
+		// This add next line is documented in the sourceforge repository. 2977248 as a fix for ongoing memory leaks that occur even with the use of clear.
 		if (isset($this->children))
 			foreach ($this->children as $n)
 			{
-				$n->clear(); $n = null;
-			}		if (isset($this->parent))
-				{
-					$this->parent->clear(); $this->parent = null;
-				}		if (isset($this->root))
-					{
-						$this->root->clear(); $this->root = null;
-					}		$this->doc = null;
+				$n->clear();
+				$n = null;
+			}
+		if (isset($this->parent))
+		{
+			$this->parent->clear();
+			$this->parent = null;
+		}
+		if (isset($this->root))
+		{
+			$this->root->clear();
+			$this->root = null;
+		}
+		$this->doc = null;
 		$this->noise = null;
 	}
 
@@ -284,7 +292,8 @@ class simple_html_dom
 						if (is_object($debugObject))
 						{
 							$debugObject->debugLog(2, 'meta content-type tag couldn\'t be parsed. using iso-8859 default.');
-						}						$charset = 'ISO-8859-1';
+						}
+						$charset = 'ISO-8859-1';
 					}
 				}
 			}
@@ -305,7 +314,8 @@ class simple_html_dom
 				if (is_object($debugObject))
 				{
 					$debugObject->debugLog(2, 'since mb_detect failed - using default of utf-8');
-				}				$charset = 'UTF-8';
+				}
+				$charset = 'UTF-8';
 			}
 		}
 
@@ -315,7 +325,8 @@ class simple_html_dom
 			if (is_object($debugObject))
 			{
 				$debugObject->debugLog(2, 'replacing ' . $charset . ' with CP1252 as its a superset');
-			}			$charset = 'CP1252';
+			}
+			$charset = 'CP1252';
 		}
 
 		if (is_object($debugObject))
@@ -538,7 +549,8 @@ class simple_html_dom
 			}
 			else
 				break;
-		} while ($this->char !== '>' && $this->char !== '/');
+		}
+		while ($this->char !== '>' && $this->char !== '/');
 
 		$this->link_nodes($node, true);
 		$node->_[HDOM_INFO_ENDSPACE] = $space[0];
@@ -725,7 +737,8 @@ class simple_html_dom
 			if (is_object($debugObject))
 			{
 				$debugObject->debugLog(2, 'key is: ' . $key);
-			}			$idx = ($remove_tag) ? 0 : 1;
+			}
+			$idx = ($remove_tag) ? 0 : 1;
 			$this->noise[$key] = $matches[$i][$idx][0];
 			$this->doc = substr_replace($this->doc, $key, $matches[$i][$idx][1], strlen($matches[$i][$idx][0]));
 		}
@@ -862,7 +875,8 @@ class simple_html_dom
 
 	public function loadFile() : void
 	{
-		$args = func_get_args(); $this->load_file($args);
+		$args = func_get_args();
+		$this->load_file($args);
 	}
 }
 

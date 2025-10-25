@@ -403,9 +403,12 @@ class simple_html_dom_node
 			{
 				switch ($this->_[HDOM_INFO_QUOTE][$i])
 				{
-					case HDOM_QUOTE_DOUBLE: $quote = '"'; break;
-					case HDOM_QUOTE_SINGLE: $quote = '\''; break;
-					default: $quote = '';
+					case HDOM_QUOTE_DOUBLE: $quote = '"';
+					break;
+					case HDOM_QUOTE_SINGLE: $quote = '\'';
+					break;
+					default:
+					$quote = '';
 				}
 				$ret .= $key . $this->_[HDOM_INFO_SPACE][$i][1] . '=' . $this->_[HDOM_INFO_SPACE][$i][2] . $quote . $val . $quote;
 			}
@@ -529,7 +532,8 @@ class simple_html_dom_node
 			if ($tag && $tag != $node->tag && $tag !== '*')
 			{
 				$pass = false;
-			}			// compare key
+			}
+			// compare key
 			if ($pass && $key)
 			{
 				if ($no_key)
@@ -672,28 +676,37 @@ class simple_html_dom_node
 			[$tag, $key, $val, $exp, $no_key] = [$m[1], null, null, '=', false];
 			if (!empty($m[2]))
 			{
-				$key = 'id'; $val = $m[2];
-			}			if (!empty($m[3]))
-				{
-					$key = 'class'; $val = $m[3];
-				}			if (!empty($m[4]))
-					{
-						$key = $m[4];
-					}			if (!empty($m[5]))
-						{
-							$exp = $m[5];
-						}			if (!empty($m[6]))
-							{
-								$val = $m[6];
-							}
+				$key = 'id';
+				$val = $m[2];
+			}
+			if (!empty($m[3]))
+			{
+				$key = 'class';
+				$val = $m[3];
+			}
+			if (!empty($m[4]))
+			{
+				$key = $m[4];
+			}
+			if (!empty($m[5]))
+			{
+				$exp = $m[5];
+			}
+			if (!empty($m[6]))
+			{
+				$val = $m[6];
+			}
 			// convert to lowercase
 			if ($this->dom->lowercase)
 			{
-				$tag = strtolower($tag); $key = strtolower($key);
-			}			//elements that do NOT have the specified attribute
+				$tag = strtolower($tag);
+				$key = strtolower($key);
+			}
+			//elements that do NOT have the specified attribute
 			if (isset($key[0]) && $key[0] === '!')
 			{
-				$key = substr($key, 1); $no_key = true;
+				$key = substr($key, 1);
+				$no_key = true;
 			}
 			$result[] = [$tag, $key, $val, $exp, $no_key];
 			if (trim($m[7]) === ',')
@@ -819,7 +832,8 @@ class simple_html_dom_node
 	 */
 	public static function is_utf8($str)
 	{
-		$c = 0; $b = 0;
+		$c = 0;
+		$b = 0;
 		$bits = 0;
 		$len = strlen($str);
 		for($i = 0; $i < $len; $i++)
@@ -1042,6 +1056,7 @@ class simple_html_dom_node
 
 	public function appendChild($node)
 	{
-		$node->parent($this); return $node;
+		$node->parent($this);
+		return $node;
 	}
 }
