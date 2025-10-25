@@ -1,3 +1,6 @@
+Fork for simple compatibility with php v8.3+.
+
+
 **Note: I don’t intend to maintain this package. [Other copies](https://packagist.org/search/?q=simple-html-dom) of Simple HTML DOM are already available on Packagist, are easier to install and don’t clutter your `composer.json`
 file.**
 
