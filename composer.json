@@ -9,13 +9,8 @@
 			"email": "me578022@gmail.com"
 		}
 	],
-	"autoload": {
-		"classmap": [
-			"simple-html-dom.php"
-		]
-	},
 	"require": {
-		 "php": "^7.4 || ^8.3"
+		"php": "^7.4 || ^8.3"
 	},
-	"version": "1.5.2"
+	"version": "1.5.3"
 }

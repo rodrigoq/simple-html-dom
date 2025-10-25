@@ -26,7 +26,7 @@ Then, require this package in the same way as any other package:
 
 ```json
 "require": {
-    "simple-html-dom/simple-html-dom": "*"
+    "rodrigoq/simple-html-dom": "*"
 }
 ```
 
